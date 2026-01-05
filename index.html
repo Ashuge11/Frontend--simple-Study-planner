@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: hsl(59, 91%, 50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background-color: #fff;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        width: 350px;
+        text-align: center;
+    }
+
+    h1 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+        width: 70%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-right: 5px;
+    }
+
+    button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+    }
+
+    button#deletbtn {
+        background-color: #f44336;
+        margin-left: 5px;
+    }
+
+    button:hover {
+        opacity: 0.9;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 20px;
+        text-align: left;
+    }
+
+    li {
+        background-color: #f9f9f9;
+        padding: 10px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Study Planner</h1>
+        <input type="text" placeholder="Enter task" id="taskInput">
+       <button id="addBtn">Add task</button>
+       <button id="deletbtn">Delete task</button>
+        <ul id="taskList">
+        </ul>
+
+    </div>
+</body>
+<script>
+    const input= document.getElementById("taskInput");
+    const button = document.getElementById("addBtn");
+    const list = document.getElementById("taskList");
+    let Task = []; 
+     let newTask = input.value;
+     Task.push(newTask);
+     button.addEventListener("click",function() {
+     if (input.value === "") return;
+     const li = document.createElement("li");
+     li.innerText = input.value;
+     list.appendChild(li);
+     input.value = " ";
+     })
+     
+     //let newTask = input.value;
+     //Task.push(newTask);
+     console.log(Task);
+    const deletbutton = document.getElementById("deletbtn");
+    deletbutton.addEventListener("click", function() {
+        list.innerHTML = ""; // Delete all tasks
+        Task = [];
+        localStorage.removeItem("Task");
+    });
+//document.getElementById()
+</script>
+</html>
